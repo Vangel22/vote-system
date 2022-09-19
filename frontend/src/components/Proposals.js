@@ -4,7 +4,7 @@ import { parseName, parseBytes } from "../utils";
 
 const Proposals = ({ proposals, voteProposal }) => {
   return (
-    <VStack w="full" h="full" bg="blue.300" borderRadius="md">
+    <VStack w="full" h="full" bg="blue.300" borderRadius="md" p={2}>
       <Text fontSize={24}>Proposal:</Text>
       {proposals.map((proposal, index) => {
         const name = parseName(parseBytes(proposal.name));

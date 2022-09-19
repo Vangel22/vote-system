@@ -98,7 +98,7 @@ export const Dapp = () => {
 
   return (
     <Container maxW="container.xl" p={0}>
-      <Flex border="md" h="100vh" py={20}>
+      <Flex border="md" h="full" py={20}>
         <VStack w="full" h="full" bg="gray.200" borderRadius="md" shadow="lg">
           <VStack w="full" h="full" spacing={12} p={10}>
             <Heading>Voting System</Heading>
