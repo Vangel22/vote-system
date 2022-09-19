@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Flex,
-  Container,
-  VStack,
-  Heading,
-  Text,
-  Input,
-  HStack,
-} from "@chakra-ui/react";
+import { Flex, Container, VStack, Heading, Text } from "@chakra-ui/react";
 
 import { ethers } from "ethers";
 

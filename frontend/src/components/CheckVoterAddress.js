@@ -10,7 +10,7 @@ const CheckVoterAddress = ({
     setVoterAddressToCheck(e.target.value);
   };
   return (
-    <HStack w="full" h="full">
+    <VStack w="full" h="full">
       <Text>Check address vote status</Text>
       <HStack w="full" display="flex" justifyContent="space-between">
         <Input
@@ -32,7 +32,7 @@ const CheckVoterAddress = ({
         </VStack>
       )}
       {voterStatus === "An error has occured" && <p>{voterStatus}</p>}
-    </HStack>
+    </VStack>
   );
 };
 
