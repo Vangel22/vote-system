@@ -11,8 +11,8 @@ const CheckVoterAddress = ({
   };
   return (
     <VStack w="full" h="full">
-      <Text>Check address vote status</Text>
       <HStack w="full" display="flex" justifyContent="space-between">
+        <Text>Check address vote status</Text>
         <Input
           placeholder="Enter user address"
           bg="white"
