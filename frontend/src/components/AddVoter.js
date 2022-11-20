@@ -1,9 +1,12 @@
-import { HStack, Button, Input, Text } from "@chakra-ui/react";
+import { HStack, Button, Input, Text, useColorMode } from '@chakra-ui/react'
 
 const AddVoter = ({ newVoter, setNewVoter, addNewVoter, newVoterStatus }) => {
+  const { colorMode } = useColorMode()
+
   const handleNewVoter = (e) => {
-    setNewVoter(e.target.value);
-  };
+    setNewVoter(e.target.value)
+  }
+
   return (
     <HStack w="full" h="full">
       <Text>
@@ -13,7 +16,7 @@ const AddVoter = ({ newVoter, setNewVoter, addNewVoter, newVoterStatus }) => {
       <HStack w="full" display="flex" justify="space-between">
         <Input
           placeholder="Enter the user address"
-          bg="white"
+          bg={colorMode === 'light' ? 'white' : 'whiteAlpha.400'}
           value={newVoter}
           onChange={handleNewVoter}
         />
@@ -23,7 +26,7 @@ const AddVoter = ({ newVoter, setNewVoter, addNewVoter, newVoterStatus }) => {
       </HStack>
       {newVoterStatus && <p>Status: {newVoterStatus}</p>}
     </HStack>
-  );
-};
+  )
+}
 
-export default AddVoter;
+export default AddVoter

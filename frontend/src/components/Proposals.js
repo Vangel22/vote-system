@@ -18,7 +18,6 @@ const Proposals = ({ proposals, voteProposal }) => {
       {proposals.map((proposal, index) => {
         const name = parseName(parseBytes(proposal.name))
         const voteCount = parseInt(proposal.voteCount._hex)
-        console.log(proposal)
         return (
           <HStack
             borderRadius="md"

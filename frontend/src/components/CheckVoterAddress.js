@@ -1,4 +1,11 @@
-import { HStack, VStack, Input, Text, Button } from "@chakra-ui/react";
+import {
+  HStack,
+  VStack,
+  Input,
+  Text,
+  Button,
+  useColorMode,
+} from '@chakra-ui/react'
 
 const CheckVoterAddress = ({
   voterAddressToCheck,
@@ -6,16 +13,19 @@ const CheckVoterAddress = ({
   checkAddressVoter,
   voterStatus,
 }) => {
+  const { colorMode } = useColorMode()
+
   const handleNewAddressToCheckVote = (e) => {
-    setVoterAddressToCheck(e.target.value);
-  };
+    setVoterAddressToCheck(e.target.value)
+  }
+
   return (
     <VStack w="full" h="full">
       <HStack w="full" display="flex" justifyContent="space-between">
         <Text>Check address vote status</Text>
         <Input
           placeholder="Enter user address"
-          bg="white"
+          bg={colorMode === 'light' ? 'white' : 'whiteAlpha.400'}
           value={voterAddressToCheck}
           onChange={handleNewAddressToCheckVote}
         />
@@ -23,7 +33,7 @@ const CheckVoterAddress = ({
           Check
         </Button>
       </HStack>
-      {voterStatus !== "An error has occured" && voterStatus && (
+      {voterStatus !== 'An error has occured' && voterStatus && (
         <VStack pt={2}>
           <Text>Voter Status</Text>
           <Text>Account: {voterAddressToCheck}</Text>
@@ -31,9 +41,9 @@ const CheckVoterAddress = ({
           <Text>Vote Weight: {Number(voterStatus?.weight?._hex)}</Text>
         </VStack>
       )}
-      {voterStatus === "An error has occured" && <p>{voterStatus}</p>}
+      {voterStatus === 'An error has occured' && <p>{voterStatus}</p>}
     </VStack>
-  );
-};
+  )
+}
 
-export default CheckVoterAddress;
+export default CheckVoterAddress
