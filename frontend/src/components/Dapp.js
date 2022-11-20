@@ -29,7 +29,7 @@ export const Dapp = () => {
   const [chairperson, setChairperson] = useState('')
 
   // **************** Ethers Connection for the SmartContract ****************
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode } = useColorMode()
 
   async function _initialize() {
     await _intializeEthers()
@@ -100,11 +100,11 @@ export const Dapp = () => {
 
   return (
     <>
-      <HStack w="full" justify="flex-end" pt={6} pr={6}>
+      <HStack w="full" justify="flex-end" pt={4} pr={4}>
         <ColorMode />
       </HStack>
       <Container maxW="container.xl" p={0}>
-        <Flex border="md" h="full" py={20}>
+        <Flex border="md" h="full" py={10}>
           <VStack
             w="full"
             h="full"

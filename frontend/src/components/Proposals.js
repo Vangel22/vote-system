@@ -1,27 +1,50 @@
-import { VStack, HStack, Text, Button } from '@chakra-ui/react'
+import { VStack, HStack, Text, Button, useColorMode } from '@chakra-ui/react'
 
 import { parseName, parseBytes } from '../utils'
 
 const Proposals = ({ proposals, voteProposal }) => {
+  const { colorMode } = useColorMode()
+
   return (
-    <VStack w="full" h="full" bg="blue.300" borderRadius="md" p={2}>
+    <VStack
+      w="full"
+      h="full"
+      align="center"
+      bg="blue.400"
+      borderRadius="md"
+      p={2}
+    >
       <Text fontSize={24}>Proposal</Text>
       {proposals.map((proposal, index) => {
         const name = parseName(parseBytes(proposal.name))
-        const voteCount = proposal.voteCount._hex
+        const voteCount = parseInt(proposal.voteCount._hex)
+        console.log(proposal)
         return (
-          <HStack w="full" h="full">
-            <VStack w="full" h="full" align="flex-start" p={2}>
-              <Text>🗳 {name}</Text>
-            </VStack>
-            <VStack w="full" h="full" align="flex-end" p={2}>
-              <Text>{Number(voteCount)}</Text>
-            </VStack>
-            <VStack w="full" h="full" align="flex-start" pl={4}>
-              <Button colorScheme="orange" onClick={() => voteProposal(index)}>
-                Vote
-              </Button>
-            </VStack>
+          <HStack
+            borderRadius="md"
+            bg={colorMode === 'light' ? 'gray.100' : 'gray.600'}
+            w="full"
+            h="full"
+            p={2}
+          >
+            <HStack w="full" h="full" align="center" p={2}>
+              <HStack w="full" h="full">
+                <Text>
+                  <b>{name}</b>
+                </Text>
+              </HStack>
+              <HStack w="full" h="full" justify="center">
+                <Text fontSize={20}>{voteCount}</Text>
+              </HStack>
+              <HStack w="full" h="full" justify="flex-end">
+                <Button
+                  colorScheme="orange"
+                  onClick={() => voteProposal(index)}
+                >
+                  Vote
+                </Button>
+              </HStack>
+            </HStack>
           </HStack>
         )
       })}
