@@ -20,6 +20,7 @@ const Proposals = ({ proposals, voteProposal }) => {
         const voteCount = parseInt(proposal.voteCount._hex)
         return (
           <HStack
+            key={index}
             borderRadius="md"
             bg={colorMode === 'light' ? 'gray.100' : 'gray.600'}
             w="full"

@@ -18,6 +18,8 @@ import AddVoter from './AddVoter'
 import TokenArtifact from '../ABI/Ballot.json'
 import contractAddress from '../ABI/contract-address.json'
 import { ColorMode } from '../themes/colormode'
+import { WinningProposal } from './WinningProposal'
+import { parseName, parseBytes } from '../utils'
 
 export const Dapp = () => {
   const [token, setToken] = useState()
@@ -27,6 +29,7 @@ export const Dapp = () => {
   const [voterAddressToCheck, setVoterAddressToCheck] = useState('')
   const [proposals, setProposals] = useState([])
   const [chairperson, setChairperson] = useState('')
+  const [winnerName, setWinnerName] = useState('')
 
   // **************** Ethers Connection for the SmartContract ****************
   const { colorMode } = useColorMode()
@@ -67,7 +70,7 @@ export const Dapp = () => {
     // When the page loads it will initialize the init function
     // that we need to connect the frontend with the smartcontract
     init()
-  }, [])
+  })
 
   // **************** Here Starts The Real Logic of the Frontend -> SmartContract ****************
 
@@ -92,6 +95,18 @@ export const Dapp = () => {
     try {
       await token.giveRightToVote(newVoter)
       setNewVoterStatus('Success')
+    } catch (err) {
+      console.log(err)
+      setNewVoterStatus('An error has occured')
+    }
+  }
+
+  const getWinningProposal = async () => {
+    try {
+      const winnerHex = await token.winningProposal()
+      const winnerIndex = parseInt(winnerHex._hex)
+      const winnerName = parseName(parseBytes(proposals[winnerIndex].name))
+      setWinnerName(winnerName)
     } catch (err) {
       console.log(err)
       setNewVoterStatus('An error has occured')
@@ -129,6 +144,10 @@ export const Dapp = () => {
                 setVoterAddressToCheck={setVoterAddressToCheck}
                 checkAddressVoter={checkAddressVoter}
                 voterStatus={voterStatus}
+              />
+              <WinningProposal
+                getWinningProposal={getWinningProposal}
+                winnerName={winnerName}
               />
             </VStack>
           </VStack>
