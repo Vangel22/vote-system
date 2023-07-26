@@ -1,8 +1,5 @@
-# vote-system
+# Vote-system DAPP
 A blockchain dapp vote system using react + solidity + hardhat.
-
-# vote-system-dapp
-
 
 ## General
 
@@ -46,5 +43,3 @@ yarn start
 ```
 
 🌟 You are all set!
-
-## 🧪 Run Tests
